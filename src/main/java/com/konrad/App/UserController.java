@@ -13,6 +13,7 @@ public class UserController {
 
     @PostMapping("/register")
     public void registerUser(@RequestBody User user){
+        user.setRole("USER");
         userService.registerUser(user);
     }
 
@@ -22,7 +23,19 @@ public class UserController {
         return userService.getUser("John");
     }
 
+    @GetMapping("/home")
+    public String home(){
+        return "HOme";
+    }
+    @GetMapping("/user")
+    public String user(){
+        return "user";
+    }
 
+    @GetMapping("/")
+    public String test(){
+        return "test";
+    }
 
 
 

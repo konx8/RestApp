@@ -12,9 +12,11 @@ public class User {
     private String id;
     private String login;
     private String password;
+    private String role;
 
-    public User(String login, String password) {
+    public User(String login, String password, String role) {
         this.login = login;
         this.password = password;
+        this.role = role;
     }
 }
