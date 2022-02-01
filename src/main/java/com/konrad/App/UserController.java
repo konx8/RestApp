@@ -13,15 +13,9 @@ public class UserController {
 
     @PostMapping("/register")
     public void registerUser(@RequestBody User user){
-        user.setRole("USER");
-        userService.registerUser(user);
+        //userService.registerUser(user);
     }
 
-
-    @GetMapping("/login/{login}")
-    public User registerUser(@PathVariable String login){
-        return userService.getUser("John");
-    }
 
     @GetMapping("/home")
     public String home(){
@@ -31,12 +25,5 @@ public class UserController {
     public String user(){
         return "user";
     }
-
-    @GetMapping("/")
-    public String test(){
-        return "test";
-    }
-
-
 
 }
