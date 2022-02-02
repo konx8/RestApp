@@ -7,13 +7,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 @Service
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
 
     private final UserRepo userRepo;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
+    private final TokenService tokenService;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         if(userRepo == null){
@@ -33,9 +36,20 @@ public class UserService implements UserDetailsService {
         user.setPassword(encodePassword);
 
         userRepo.save(user);
-        // get back token
 
-        return "User created";
+        String token = UUID.randomUUID().toString();
+
+        Token userToken = new Token(
+                token,
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(10),
+                user
+
+        );
+
+        tokenService.saveToken(userToken);
+
+        return token;
     }
 
 }

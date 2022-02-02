@@ -1,5 +1,6 @@
 package com.konrad.App;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -14,20 +15,17 @@ import java.util.Collections;
 @Document
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class User implements UserDetails {
 
     @Id
     private String id;
-    private String firstname;
     private String username;
-    private String email;
     private String password;
     private String role;
 
-    public User(String firstname, String username, String email, String password) {
-        this.firstname = firstname;
+    public User(String username, String password) {
         this.username = username;
-        this.email = email;
         this.password = password;
     }
 
