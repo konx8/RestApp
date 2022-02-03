@@ -15,4 +15,7 @@ public class Item {
     private String userId;
     private String name;
 
+    public Item(String name) {
+        this.name = name;
+    }
 }

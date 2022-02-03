@@ -9,9 +9,9 @@ public class RegistrationService {
 
     private final UserService userService;
 
-    public String register(RegistrationRequest request) {
+    public void register(RegistrationRequest request) {
 
-        return userService.signUpUser(
+         userService.signUpUser(
                 new User(
                         request.getUsername(),
                         request.getPassword()

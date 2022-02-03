@@ -17,15 +17,13 @@ public class Token {
     private String token;
     private LocalDateTime created;
     private LocalDateTime expire;
+    private String userId;
+    private String userName;
 
-
-    private User user;
-
-    public Token(String token, LocalDateTime created, LocalDateTime expire, User user) {
+    public Token(String token, LocalDateTime created, LocalDateTime expire, String userName) {
         this.token = token;
         this.created = created;
         this.expire = expire;
-
-        this.user = user;
+        this.userName = userName;
     }
 }

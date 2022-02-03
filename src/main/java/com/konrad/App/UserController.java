@@ -11,19 +11,12 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/register")
-    public void registerUser(@RequestBody User user){
-        //userService.registerUser(user);
+
+    @PostMapping("/login")
+    public String login(@RequestBody User user){
+        return userService.login(user);
+
     }
 
-
-    @GetMapping("/home")
-    public String home(){
-        return "HOme";
-    }
-    @GetMapping("/user")
-    public String user(){
-        return "user";
-    }
 
 }
